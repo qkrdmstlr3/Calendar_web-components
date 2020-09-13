@@ -1,5 +1,7 @@
 // webpack.config.js
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: ['@babel/polyfill', './src/index.js'],
@@ -19,8 +21,20 @@ module.exports = {
           plugins: ['@babel/plugin-transform-runtime'],
         },
       },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin, 'css-loader'],
+      },
     ],
   },
-  plugins: [],
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'public/index.html',
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'src/style/style.css',
+    }),
+  ],
   devtool: 'inline-source-map',
 };
