@@ -1,6 +1,5 @@
 // lib
-import { html } from 'lit-html';
-import litHTML from 'lib/litHTML';
+import shellHTML from 'lib/shellHTML';
 import { getNextCalendar, getPrevCalendar } from 'lib/shelldux/action';
 
 // util
@@ -9,10 +8,9 @@ import { _sqs } from 'util/module';
 // components
 import './calendar';
 
-class CalendarView extends litHTML(HTMLElement) {
+class CalendarView extends shellHTML(HTMLElement) {
   constructor() {
     super();
-
     this.attachShadow({ mode: 'open' });
     this.invalidate(true);
   }
@@ -35,7 +33,7 @@ class CalendarView extends litHTML(HTMLElement) {
   }
 
   render() {
-    return html`
+    return `
       ${style}
       <section>
         <button class="left__button">
@@ -53,7 +51,7 @@ class CalendarView extends litHTML(HTMLElement) {
   }
 }
 
-const style = html`
+const style = `
   <style>
     section {
       height: 60%;

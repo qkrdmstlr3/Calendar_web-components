@@ -1,12 +1,11 @@
 // lib
-import { html } from 'lit-html';
-import LitHTML from 'lib/litHTML';
+import shellHTML from 'lib/shellHTML';
 import store from 'lib/shelldux/store';
 
 // util
 import { makeCalendar, getNextDate } from 'util/calendar';
 
-class Calendar extends LitHTML(HTMLElement) {
+class Calendar extends shellHTML(HTMLElement) {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -33,12 +32,13 @@ class Calendar extends LitHTML(HTMLElement) {
 
     if (this.position === 'right') {
       const [year, month] = getNextDate(calendarYear, calendarMonth);
-      return html`${style} ${makeCalendar(year, month)}`;
+
+      return `${style} ${makeCalendar(year, month).outerHTML}`;
     }
-    return html` ${style} ${makeCalendar(calendarYear, calendarMonth)} `;
+    return ` ${style} ${makeCalendar(calendarYear, calendarMonth).outerHTML} `;
   }
 }
-const style = html`
+const style = `
   <style>
     li {
       list-style: none;
