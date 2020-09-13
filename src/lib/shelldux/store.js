@@ -5,12 +5,12 @@ class Store {
   }
 
   observe(object, fn) {
-    this.observingObject.push(object, fn);
+    this.observingObject.push([object, fn]);
   }
 
   setState(state) {
     this.state = state;
-    this.observingObject.forEach((object, fn) => {
+    this.observingObject.forEach(([object, fn]) => {
       fn.call(object);
     });
   }
