@@ -4,7 +4,7 @@ import LitHTML from 'lib/litHTML';
 import store from 'lib/shelldux/store';
 
 // util
-import { makeCalendar } from 'util/calendar';
+import { makeCalendar, getNextDate } from 'util/calendar';
 
 class Calendar extends LitHTML(HTMLElement) {
   constructor() {
@@ -18,9 +18,23 @@ class Calendar extends LitHTML(HTMLElement) {
     store.observe(this, this.reRender);
   }
 
+  static get observedAttributes() {
+    return ['position'];
+  }
+
+  attributeChangedCallback(attrName, oldVal, newVal) {
+    if (oldVal !== newVal) {
+      this.position = newVal;
+    }
+  }
+
   render() {
     const { calendarYear, calendarMonth } = store.getState();
 
+    if (this.position === 'right') {
+      const [year, month] = getNextDate(calendarYear, calendarMonth);
+      return html`${style} ${makeCalendar(year, month)}`;
+    }
     return html` ${style} ${makeCalendar(calendarYear, calendarMonth)} `;
   }
 }
