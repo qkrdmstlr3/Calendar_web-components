@@ -1,6 +1,7 @@
 // lib
-import litHTML from 'lib/litHTML';
 import { html } from 'lit-html';
+import litHTML from 'lib/litHTML';
+import { getNextCalendar, getPrevCalendar } from 'lib/shelldux/action';
 
 // util
 import { _sqs } from 'util/module';
@@ -25,9 +26,13 @@ class CalendarView extends litHTML(HTMLElement) {
       .addEventListener('click', this.handleRightBtn);
   }
 
-  handleLeftBtn() {}
+  handleLeftBtn() {
+    getPrevCalendar();
+  }
 
-  handleRightBtn() {}
+  handleRightBtn() {
+    getNextCalendar();
+  }
 
   render() {
     return html`
