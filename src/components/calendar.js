@@ -5,6 +5,9 @@ import store from 'lib/shelldux/store';
 // util
 import { makeCalendar, getNextDate } from 'util/calendar';
 
+// Style
+import styleSheet from 'style/calendar.scss';
+
 class Calendar extends shellHTML(HTMLElement) {
   constructor() {
     super();
@@ -33,55 +36,14 @@ class Calendar extends shellHTML(HTMLElement) {
     if (this.position === 'right') {
       const [year, month] = getNextDate(calendarYear, calendarMonth);
 
-      return `${style} ${makeCalendar(year, month).outerHTML}`;
+      return [`${makeCalendar(year, month).outerHTML}`, styleSheet];
     }
-    return ` ${style} ${makeCalendar(calendarYear, calendarMonth).outerHTML} `;
+
+    return [
+      ` ${makeCalendar(calendarYear, calendarMonth).outerHTML} `,
+      styleSheet,
+    ];
   }
 }
-const style = `
-  <style>
-    li {
-      list-style: none;
-      width:
-    }
-
-    h2 {
-      display: block;
-      width: 100%:
-      margin: 15px 0;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    div {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    span {
-      display: inline-block;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-sizing: border-box;
-
-      border-radius: 24px;
-      font-weight: bold;
-      font-size: 14px;
-    }
-    .header__calendar-restday {
-      cursor: pointer;
-    }
-    .header__calendar-restday:hover {
-      border: 1px solid black;
-    }
-    .header__calendar-oldday {
-      opacity: 0.5;
-    }
-  </style>
-`;
 
 customElements.define('calendar-page', Calendar);

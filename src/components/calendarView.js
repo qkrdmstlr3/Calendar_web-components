@@ -8,6 +8,9 @@ import { _sqs } from 'util/module';
 // components
 import './calendar';
 
+// Style
+import styleSheet from 'style/calendarView.scss';
+
 class CalendarView extends shellHTML(HTMLElement) {
   constructor() {
     super();
@@ -33,8 +36,8 @@ class CalendarView extends shellHTML(HTMLElement) {
   }
 
   render() {
-    return `
-      ${style}
+    return [
+      `
       <section>
         <button class="left__button">
           <font-awesome icon="fas fa-chevron-left"><</font-awesome>
@@ -47,43 +50,10 @@ class CalendarView extends shellHTML(HTMLElement) {
           <fa-i class="fas fa-chevron-left">></fa-i>
         </button>
       </section>
-    `;
+    `,
+      styleSheet,
+    ];
   }
 }
-
-const style = `
-  <style>
-    section {
-      height: 60%;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 0 60px;
-    }
-    button {
-      width: 60px;
-      height: 60px;
-      color: white;
-      background-color: #dccab3;
-      border: none;
-      border-radius: 20px;
-      font-size: 35px;
-      font-weight: bold;
-      cursor: pointer;
-      outline: none;
-    }
-    button:hover {
-      background-color: #ffd19b;
-    }
-    ul {
-      width: 60%;
-      height: 80%;
-      padding: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-  </style>
-`;
 
 customElements.define('calendar-view', CalendarView);

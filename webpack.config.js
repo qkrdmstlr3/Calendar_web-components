@@ -25,12 +25,27 @@ module.exports = {
         test: /\.css$/,
         use: [MiniCssExtractPlugin, 'css-loader'],
       },
+      {
+        test: /\.scss$/,
+        use: [
+          'raw-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                includePaths: [path.resolve(__dirname, 'node_modules')],
+              },
+            },
+          },
+        ],
+      },
     ],
   },
   resolve: {
     alias: {
       lib: path.resolve(__dirname, 'src/lib/'),
       util: path.resolve(__dirname, 'src/util/'),
+      style: path.resolve(__dirname, 'src/style/'),
     },
   },
   plugins: [

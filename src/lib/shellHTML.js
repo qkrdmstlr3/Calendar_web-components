@@ -1,5 +1,11 @@
-function render(html, dom) {
+function render([html, css], dom) {
   dom.innerHTML = html;
+
+  if (css) {
+    const style = document.createElement('style');
+    style.appendChild(document.createTextNode(css));
+    dom.appendChild(style);
+  }
 }
 
 export default (base) =>
