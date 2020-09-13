@@ -2,6 +2,9 @@
 import litHTML from 'lib/litHTML';
 import { html } from 'lit-html';
 
+// util
+import { _sqs } from 'util/module';
+
 // components
 import './calendar';
 
@@ -10,8 +13,21 @@ class CalendarView extends litHTML(HTMLElement) {
     super();
 
     this.attachShadow({ mode: 'open' });
-    this.invalidate();
+    this.invalidate(true);
   }
+
+  connectedCallback() {
+    _sqs
+      .call(this, '.left__button')
+      .addEventListener('click', this.handleLeftBtn);
+    _sqs
+      .call(this, '.right__button')
+      .addEventListener('click', this.handleRightBtn);
+  }
+
+  handleLeftBtn() {}
+
+  handleRightBtn() {}
 
   render() {
     return html`
