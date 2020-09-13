@@ -27,6 +27,11 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    alias: {
+      lib: path.resolve(__dirname, 'src/lib/'),
+    },
+  },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
