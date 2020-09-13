@@ -32,10 +32,9 @@ span {
 
 .header__calendar-restday {
   cursor: pointer;
-}
-
-.header__calendar-restday:hover {
-  border: 1px solid black;
+  &:hover {
+    border: 1px solid black;
+  }
 }
 
 .header__calendar-oldday {
