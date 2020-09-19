@@ -24,7 +24,18 @@ class Plan extends shellHTML(HTMLElement) {
   render() {
     return [
       `
-        <div>plan</div>
+        <ul>
+          <li>
+            <span>2020년 --월 --일</span>
+            <span>2020년 --월 --일</span>
+            <span>러시아 여행</span>
+          </li>
+          <li>
+            <span>2020년 --월 --일</span>
+            <span>2020년 --월 --일</span>
+            <span>뭐시기뭐시기 프로젝트</span>
+          </li>
+        </ul>
       `,
       styleSheet,
     ];

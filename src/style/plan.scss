@@ -1,0 +1,25 @@
+@import './variables.scss';
+
+ul {
+  width: 50%;
+  margin: 0 auto;
+  list-style: none;
+
+  li {
+    margin: 12px 0;
+    padding: 10px;
+
+    background-color: $color-deepMain;
+    border-radius: 10px;
+    span {
+      margin-right: 8px;
+      font-size: 14px;
+
+      &:last-child {
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+      }
+    }
+  }
+}
