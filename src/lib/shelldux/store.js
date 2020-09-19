@@ -31,6 +31,8 @@ const initialState = {
   tab: 'start',
   startTab: '',
   endTab: '',
+
+  planList: [],
 };
 
 const store = new Store(initialState);

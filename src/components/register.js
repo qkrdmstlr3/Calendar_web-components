@@ -2,6 +2,10 @@
 import shellHTML from 'lib/shellHTML';
 import store from 'lib/shelldux/store';
 import { chooseStartTab, chooseEndTab } from 'lib/shelldux/action/register';
+import { makePlan } from 'lib/shelldux/action/plan';
+
+// Util
+import { querySelector } from 'util/module';
 
 // Style
 import styleSheet from 'style/register.scss';
@@ -20,6 +24,9 @@ class Register extends shellHTML(HTMLElement) {
     this.shadowRoot.addEventListener('click', (event) => {
       this.handleTabClick(event);
     });
+    this.shadowRoot.addEventListener('submit', (event) => {
+      this.handleMakePlan(event);
+    });
   }
 
   handleTabClick(event) {
@@ -29,6 +36,16 @@ class Register extends shellHTML(HTMLElement) {
     }
     if (event.target.classList.contains('end__day')) {
       chooseEndTab();
+      return;
+    }
+  }
+
+  handleMakePlan(event) {
+    event.preventDefault();
+    if (event.target.closest('form')) {
+      const plan = querySelector('input[name="plan"]', this.shadowRoot);
+
+      makePlan(plan);
       return;
     }
   }
