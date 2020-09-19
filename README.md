@@ -5,7 +5,7 @@
 ```
 npm install
 ```
-
+![스크린샷 2020-09-19 오후 9 42 45](https://user-images.githubusercontent.com/26402298/93667694-d3121b00-fac2-11ea-8e2e-3bdea08fa83b.png)
 ## 계기
 
 순수 html css js로 react처럼 코딩할 순 없을까?
