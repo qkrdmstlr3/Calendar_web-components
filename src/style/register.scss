@@ -1,0 +1,26 @@
+@import './variables.scss';
+
+form {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+
+  div {
+    width: 27%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: $color-deepMain;
+    border-radius: 25px;
+    span {
+      padding-left: 12px;
+    }
+  }
+
+  input {
+    width: 36%;
+    max-height: 40px;
+    outline: none;
+  }
+}
