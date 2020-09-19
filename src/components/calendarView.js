@@ -2,9 +2,6 @@
 import shellHTML from 'lib/shellHTML';
 import { getNextCalendar, getPrevCalendar } from 'lib/shelldux/action/calendar';
 
-// util
-import { _sqs } from 'util/module';
-
 // components
 import './calendar';
 
@@ -15,16 +12,23 @@ class CalendarView extends shellHTML(HTMLElement) {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.invalidate(true);
+    this.invalidate();
   }
 
   connectedCallback() {
-    _sqs
-      .call(this, '.left__button')
-      .addEventListener('click', this.handleLeftBtn);
-    _sqs
-      .call(this, '.right__button')
-      .addEventListener('click', this.handleRightBtn);
+    this.shadowRoot.addEventListener('click', (event) => {
+      this.handleCalendar(event);
+    });
+  }
+
+  handleCalendar(event) {
+    const button = event.target.closest('button');
+    if (button.classList.contains('left__button')) {
+      this.handleLeftBtn();
+    }
+    if (button.classList.contains('right__button')) {
+      this.handleRightBtn();
+    }
   }
 
   handleLeftBtn() {
