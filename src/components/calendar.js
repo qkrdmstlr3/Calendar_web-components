@@ -49,69 +49,45 @@ class Calendar extends shellHTML(HTMLElement) {
       return;
     }
     this.ifTabIsEnd(day);
+    this.drawColorToCalendar();
   }
 
   ifTabIsStart(day) {
     const { startTab, endTab } = store.getState();
-    if (!startTab) {
-      if (!endTab) {
-        //시작 종료 둘다 없을 때
-        chooseDate(day.id, 'startTab');
-      } else {
-        // 종료만 있을 때
-        if (compareDate(day.id, endTab)) {
-          //종료가 시작보다 클 때
-          chooseDate(day.id, 'startTab');
-          chooseDate('', 'endTab');
-        } else {
-          chooseDate(day.id, 'startTab');
-        }
-      }
-    } else {
-      if (!endTab) {
-        //시작만 있을 때
-        chooseDate(day.id, 'startTab');
-      } else {
-        if (compareDate(endTab, day.id)) {
-          // 종료보다 시작이 작을 때
-          chooseDate(day.id, 'startTab');
-        } else {
-          chooseDate('', 'endTab');
-          chooseDate(day.id, 'startTab');
-        }
-      }
+    chooseDate(day.id, 'startTab');
+    if (!startTab && endTab && compareDate(day.id, endTab)) {
+      chooseDate('', 'endTab');
+      return;
+    }
+    if (endTab && !compareDate(endTab, day.id)) {
+      chooseDate('', 'endTab');
     }
   }
 
   ifTabIsEnd(day) {
     const { startTab, endTab } = store.getState();
     if (!startTab) {
-      if (!endTab) {
-        //시작 종료 둘다 없을 때
-        chooseDate(day.id, 'endTab');
-        return;
-      } else {
-        // 종료만 있을 때
-        chooseDate(day.id, 'endTab');
-      }
-    } else {
-      if (!endTab) {
-        //시작만 있을 때
-        if (compareDate(startTab, day.id)) {
-          chooseDate(day.id, 'startTab');
-          return;
-        } else {
-          chooseDate(day.id, 'endTab');
-        }
-      } else {
-        if (compareDate(day.id, startTab)) {
-          chooseDate(day.id, 'endTab');
-          return;
-        }
-        chooseDate('', 'endTab');
-        chooseDate(day.id, 'startTab');
-      }
+      chooseDate(day.id, 'endTab');
+      return;
     }
+    if (!endTab) {
+      if (compareDate(startTab, day.id)) {
+        chooseDate(day.id, 'startTab');
+        return;
+      }
+      chooseDate(day.id, 'endTab');
+      return;
+    }
+    if (compareDate(day.id, startTab)) {
+      chooseDate(day.id, 'endTab');
+      return;
+    }
+    chooseDate('', 'endTab');
+    chooseDate(day.id, 'startTab');
+  }
+
+  drawColorToCalendar() {
+    const { startTab, endTab } = store.getState();
   }
 
   render() {
