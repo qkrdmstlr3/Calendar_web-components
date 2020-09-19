@@ -15,10 +15,6 @@ class Plan extends shellHTML(HTMLElement) {
   connectedCallback() {
     this.reRender = () => this.invalidate();
     store.observe(this, this.reRender);
-
-    this.shadowRoot.addEventListener('click', (event) => {
-      this.handleTabClick(event);
-    });
   }
 
   render() {

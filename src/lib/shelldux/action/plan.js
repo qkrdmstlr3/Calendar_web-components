@@ -19,6 +19,9 @@ export const makePlan = (plan) => {
 
   store.setState({
     ...state,
+
+    startTab: '',
+    endTab: '',
     planList,
   });
 };
