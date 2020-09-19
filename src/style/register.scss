@@ -13,6 +13,8 @@ form {
     align-items: center;
     background-color: $color-deepMain;
     border-radius: 25px;
+    cursor: pointer;
+
     span {
       padding-left: 12px;
     }
@@ -22,5 +24,9 @@ form {
     width: 36%;
     max-height: 40px;
     outline: none;
+  }
+
+  .selected {
+    background-color: $color-orange;
   }
 }
