@@ -22,19 +22,24 @@ class Plan extends shellHTML(HTMLElement) {
   }
 
   render() {
+    const { planList } = store.getState();
+
+    let plans = '';
+
+    planList.forEach((plan) => {
+      plans += `
+        <li>
+          <span>${plan.startDay}</span>
+          <span>${plan.endDay}</span>
+          <span>${plan.plan}</span>
+        </li>
+      `;
+    });
+
     return [
       `
         <ul>
-          <li>
-            <span>2020년 --월 --일</span>
-            <span>2020년 --월 --일</span>
-            <span>러시아 여행</span>
-          </li>
-          <li>
-            <span>2020년 --월 --일</span>
-            <span>2020년 --월 --일</span>
-            <span>뭐시기뭐시기 프로젝트</span>
-          </li>
+          ${plans}
         </ul>
       `,
       styleSheet,

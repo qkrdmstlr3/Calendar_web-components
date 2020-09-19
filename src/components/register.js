@@ -43,7 +43,7 @@ class Register extends shellHTML(HTMLElement) {
   handleMakePlan(event) {
     event.preventDefault();
     if (event.target.closest('form')) {
-      const plan = querySelector('input[name="plan"]', this.shadowRoot);
+      const plan = querySelector('input[name="plan"]', this.shadowRoot).value;
 
       makePlan(plan);
       return;
