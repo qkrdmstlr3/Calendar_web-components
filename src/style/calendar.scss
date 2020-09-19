@@ -30,13 +30,13 @@ span {
   font-size: 14px;
 }
 
-.header__calendar-restday {
+.calendar-restday {
   cursor: pointer;
   &:hover {
     border: 1px solid black;
   }
 }
 
-.header__calendar-oldday {
+.calendar-oldday {
   opacity: 0.5;
 }

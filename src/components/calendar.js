@@ -18,15 +18,25 @@ class Calendar extends shellHTML(HTMLElement) {
   connectedCallback() {
     this.reRender = () => this.invalidate();
     store.observe(this, this.reRender);
+
+    this.shadowRoot.addEventListener('click', (event) => {
+      this.calendarDayControl(event);
+    });
   }
 
   static get observedAttributes() {
     return ['position'];
   }
 
-  attributeChangedCallback(attrName, oldVal, newVal) {
-    if (oldVal !== newVal) {
-      this.position = newVal;
+  attributeChangedCallback(attrName, oldValue, newValue) {
+    if (oldValue !== newValue) {
+      this.position = newValue;
+    }
+  }
+
+  calendarDayControl(event) {
+    if (event.target.classList.contains('calendar__restday')) {
+      console.log('click');
     }
   }
 

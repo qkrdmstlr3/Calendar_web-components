@@ -25,9 +25,11 @@ class Register extends shellHTML(HTMLElement) {
   handleTabClick(event) {
     if (event.target.classList.contains('start__day')) {
       chooseStartTab();
+      return;
     }
     if (event.target.classList.contains('end__day')) {
       chooseEndTab();
+      return;
     }
   }
 

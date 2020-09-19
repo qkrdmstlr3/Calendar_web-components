@@ -27,11 +27,11 @@ function setClassToDOM(weekSpan, date, year, month) {
     (todayYear <= year && todayMonth < month) ||
     todayYear < year;
   if (isRestday) {
-    addClass(weekSpan, 'header__calendar-restday');
+    addClass(weekSpan, 'calendar-restday');
     addId(weekSpan, `${year}년 ${month}월 ${date}일`);
     return;
   }
-  addClass(weekSpan, 'header__calendar-oldday');
+  addClass(weekSpan, 'calendar-oldday');
 }
 
 function makeDays(calendar, year, month) {
