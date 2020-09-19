@@ -1,6 +1,6 @@
 // lib
 import shellHTML from 'lib/shellHTML';
-import { getNextCalendar, getPrevCalendar } from 'lib/shelldux/action';
+import { getNextCalendar, getPrevCalendar } from 'lib/shelldux/action/calendar';
 
 // util
 import { _sqs } from 'util/module';
