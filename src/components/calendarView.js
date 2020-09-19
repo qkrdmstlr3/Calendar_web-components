@@ -23,6 +23,11 @@ class CalendarView extends shellHTML(HTMLElement) {
 
   handleCalendar(event) {
     const button = event.target.closest('button');
+
+    if (!button) {
+      return;
+    }
+
     if (button.classList.contains('left__button')) {
       this.handleLeftBtn();
       return;

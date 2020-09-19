@@ -34,16 +34,16 @@ class Register extends shellHTML(HTMLElement) {
   }
 
   render() {
-    const { tab } = store.getState();
+    const { tab, startTab, endTab } = store.getState();
 
     return [
       `
         <form>
           <div class="start__day ${tab === 'start' ? 'selected' : ''}">
-            <span>시작일</span>
+            <span>시작일 / ${startTab}</span>
           </div>
           <div class="end__day ${tab === 'end' ? 'selected' : ''}">
-            <span>종료일</span>
+            <span>종료일 / ${endTab}</span>
           </div>
           <input type="text" placeholder="일정을 입력해주세요" minlength="2" name="plan"/>
         </form>

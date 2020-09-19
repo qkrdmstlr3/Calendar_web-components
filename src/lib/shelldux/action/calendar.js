@@ -23,3 +23,11 @@ export const getNextCalendar = () => {
 
   store.setState(state);
 };
+
+export const chooseDate = (date, tab) => {
+  const state = store.getState();
+  store.setState({
+    ...state,
+    [tab]: date,
+  });
+};

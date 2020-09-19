@@ -29,6 +29,8 @@ const initialState = {
   calendarYear: todayDate.getFullYear(),
 
   tab: 'start',
+  startTab: '',
+  endTab: '',
 };
 
 const store = new Store(initialState);
