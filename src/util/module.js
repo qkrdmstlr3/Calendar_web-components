@@ -1,9 +1,9 @@
-export function _sqs(element) {
-  return this.shadowRoot.querySelector(element);
+export function querySelector(element, dom = document) {
+  return dom.querySelector(element);
 }
 
-export function _sqsa(element) {
-  return this.shadowRoot.querySelectorAll(element);
+export function querySelectorAll(element, dom = document) {
+  return dom.querySelectorAll(element);
 }
 
 export function createElement(dom) {
@@ -12,6 +12,10 @@ export function createElement(dom) {
 
 export function addClass(dom, className) {
   dom.classList.add(className);
+}
+
+export function initClass(dom) {
+  dom.className = '';
 }
 
 export function addId(dom, idName) {

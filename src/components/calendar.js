@@ -5,6 +5,7 @@ import { chooseDate } from 'lib/shelldux/action/calendar';
 
 // util
 import { compareDate, makeCalendar, getNextDate } from 'util/calendar';
+import { initClass, addClass, querySelectorAll } from 'util/module';
 
 // Style
 import styleSheet from 'style/calendar.scss';
@@ -17,7 +18,10 @@ class Calendar extends shellHTML(HTMLElement) {
   }
 
   connectedCallback() {
-    this.reRender = () => this.invalidate();
+    this.reRender = () => {
+      this.invalidate(true);
+      this.drawColorToCalendar();
+    };
     store.observe(this, this.reRender);
 
     this.shadowRoot.addEventListener('click', (event) => {
@@ -43,17 +47,16 @@ class Calendar extends shellHTML(HTMLElement) {
   }
 
   handleDayControl(day) {
-    const { tab } = store.getState();
+    const { tab, startTab, endTab } = store.getState();
+
     if (tab === 'start') {
-      this.ifTabIsStart(day);
+      this.ifTabIsStart(day, startTab, endTab);
       return;
     }
-    this.ifTabIsEnd(day);
-    this.drawColorToCalendar();
+    this.ifTabIsEnd(day, startTab, endTab);
   }
 
-  ifTabIsStart(day) {
-    const { startTab, endTab } = store.getState();
+  ifTabIsStart(day, startTab, endTab) {
     chooseDate(day.id, 'startTab');
     if (!startTab && endTab && compareDate(day.id, endTab)) {
       chooseDate('', 'endTab');
@@ -64,8 +67,7 @@ class Calendar extends shellHTML(HTMLElement) {
     }
   }
 
-  ifTabIsEnd(day) {
-    const { startTab, endTab } = store.getState();
+  ifTabIsEnd(day, startTab, endTab) {
     if (!startTab) {
       chooseDate(day.id, 'endTab');
       return;
@@ -88,6 +90,29 @@ class Calendar extends shellHTML(HTMLElement) {
 
   drawColorToCalendar() {
     const { startTab, endTab } = store.getState();
+
+    const days = querySelectorAll('.calendar-restday', this.shadowRoot);
+    days.forEach((day) => {
+      initClass(day);
+      addClass(day, 'calendar-restday');
+
+      if (startTab === day.id || endTab === day.id) {
+        addClass(day, 'color__black');
+        return;
+      }
+
+      if (
+        startTab &&
+        endTab &&
+        compareDate(day.id, startTab) &&
+        compareDate(endTab, day.id)
+      ) {
+        addClass(day, 'color__gray');
+        return;
+      }
+
+      addClass(day, 'color__main');
+    });
   }
 
   render() {

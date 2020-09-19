@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 li {
   list-style: none;
 }
@@ -39,4 +41,17 @@ span {
 
 .calendar-oldday {
   opacity: 0.5;
+}
+
+.color__main {
+  background-color: $color-main;
+}
+
+.color__black {
+  background-color: $color-black;
+  color: white;
+}
+
+.color__gray {
+  background-color: $color-lightGray;
 }
