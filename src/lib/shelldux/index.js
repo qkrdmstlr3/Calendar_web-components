@@ -4,6 +4,7 @@ class Shelldux {
   constructor() {
     this.reducers = null;
     this.states = null;
+    this.observingList = null;
   }
 
   dispatch(result) {
@@ -11,8 +12,15 @@ class Shelldux {
       const state = reducer(this.states[key], result);
       if (state !== reducer(undefined, '')) {
         this.states[key] = state;
+        this.observingList[key].forEach(([document, fn]) => {
+          fn.call(document);
+        });
       }
     });
+  }
+
+  observe(key, component, fn) {
+    this.observingList[key].push([component, fn]);
   }
 }
 
@@ -22,11 +30,14 @@ reducer();
 export function combineReducers(reducers) {
   shelldux.reducers = reducers;
   const states = {};
+  const observingList = {};
 
   Object.entries(reducers).forEach(([key, reducer]) => {
     states[key] = reducer(undefined, '');
+    observingList[key] = [];
   });
   shelldux.states = states;
+  shelldux.observingList = observingList;
 }
 
 export function selector(fn) {
@@ -35,6 +46,10 @@ export function selector(fn) {
 
 export function dispatch(result) {
   shelldux.dispatch(result);
+}
+
+export function observe(key, component, fn) {
+  shelldux.observe(key, component, fn);
 }
 
 export default shelldux;

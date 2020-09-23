@@ -2,7 +2,7 @@
 import Shellact from 'lib/shellact';
 
 // shelldux
-import { selector, dispatch } from 'lib/shelldux';
+import { selector, dispatch, observe } from 'lib/shelldux';
 import {
   handleChooseStartTab,
   handleChooseEndTab,
@@ -17,6 +17,7 @@ import styleSheet from 'style/register.scss';
 
 class Register extends Shellact {
   connectedCallback() {
+    observe('calendar', this, this.rerender);
     this.shadowRoot.addEventListener('click', (event) => {
       this.handleTabClick(event);
     });
