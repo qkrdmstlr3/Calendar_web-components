@@ -1,19 +1,13 @@
 // lib
-import shellHTML from 'lib/shellHTML';
+import Shellact from 'lib/shellact';
 import store from 'lib/shelldux/store';
 
 // Style
 import styleSheet from 'style/plan.scss';
 
-class Plan extends shellHTML(HTMLElement) {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.invalidate();
-  }
-
+class Plan extends Shellact {
   connectedCallback() {
-    this.reRender = () => this.invalidate();
+    this.reRender = () => this.rerender();
     store.observe(this, this.reRender);
   }
 

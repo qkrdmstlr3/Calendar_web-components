@@ -1,5 +1,5 @@
 // lib
-import shellHTML from 'lib/shellHTML';
+import Shellact from 'lib/shellact';
 import { getNextCalendar, getPrevCalendar } from 'lib/shelldux/action/calendar';
 
 // components
@@ -8,13 +8,7 @@ import './calendar';
 // Style
 import styleSheet from 'style/calendarView.scss';
 
-class CalendarView extends shellHTML(HTMLElement) {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.invalidate();
-  }
-
+class CalendarView extends Shellact {
   connectedCallback() {
     this.shadowRoot.addEventListener('click', (event) => {
       this.handleCalendar(event);

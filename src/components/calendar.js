@@ -1,5 +1,5 @@
 // lib
-import shellHTML from 'lib/shellHTML';
+import Shellact from 'lib/shellact';
 import store from 'lib/shelldux/store';
 import { chooseDate } from 'lib/shelldux/action/calendar';
 
@@ -10,16 +10,10 @@ import { initClass, addClass, querySelectorAll } from 'util/module';
 // Style
 import styleSheet from 'style/calendar.scss';
 
-class Calendar extends shellHTML(HTMLElement) {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.invalidate();
-  }
-
+class Calendar extends Shellact {
   connectedCallback() {
     this.reRender = () => {
-      this.invalidate(true);
+      this.rerender();
       this.drawColorToCalendar();
     };
     store.observe(this, this.reRender);

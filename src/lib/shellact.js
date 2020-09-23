@@ -4,7 +4,7 @@ function renderOutside([html, css], dom) {
   if (css) {
     const style = document.createElement('style');
     style.appendChild(document.createTextNode(css));
-    dom.createElement(style);
+    dom.appendChild(style);
   }
 }
 

@@ -1,5 +1,5 @@
 // lib
-import shellHTML from 'lib/shellHTML';
+import Shellact from 'lib/shellact';
 import store from 'lib/shelldux/store';
 import { chooseStartTab, chooseEndTab } from 'lib/shelldux/action/register';
 import { makePlan } from 'lib/shelldux/action/plan';
@@ -10,15 +10,9 @@ import { querySelector } from 'util/module';
 // Style
 import styleSheet from 'style/register.scss';
 
-class Register extends shellHTML(HTMLElement) {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.invalidate();
-  }
-
+class Register extends Shellact {
   connectedCallback() {
-    this.reRender = () => this.invalidate();
+    this.reRender = () => this.rerender();
     store.observe(this, this.reRender);
 
     this.shadowRoot.addEventListener('click', (event) => {
