@@ -1,33 +1,6 @@
-// shelldux
-import store from '../store';
+export const GET_PREV_CALENDAR = 'GET_PREV_CALENDAR';
+export const GET_NEXT_CALENDAR = 'GET_NEXT_CALENDAR';
 
-// util
-import { getPrevDate, getNextDate } from 'util/calendar';
-
-export const getPrevCalendar = () => {
-  const state = store.getState();
-
-  const [year, month] = getPrevDate(state.calendarYear, state.calendarMonth);
-  state.calendarYear = year;
-  state.calendarMonth = month;
-
-  store.setState(state);
-};
-
-export const getNextCalendar = () => {
-  const state = store.getState();
-
-  const [year, month] = getNextDate(state.calendarYear, state.calendarMonth);
-  state.calendarYear = year;
-  state.calendarMonth = month;
-
-  store.setState(state);
-};
-
-export const chooseDate = (date, tab) => {
-  const state = store.getState();
-  store.setState({
-    ...state,
-    [tab]: date,
-  });
-};
+export const CHOOSE_DATE = 'CHOOSE_DATE';
+export const CHOOSE_START_TAB = 'CHOOSE_START_TAB';
+export const CHOOSE_END_TAB = 'CHOOSE_END_TAB';

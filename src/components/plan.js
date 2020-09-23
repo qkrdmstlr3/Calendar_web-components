@@ -1,21 +1,17 @@
 // lib
 import Shellact from 'lib/shellact';
-import store from 'lib/shelldux/store';
+
+// shelldux
+import { selector } from 'lib/shelldux';
 
 // Style
 import styleSheet from 'style/plan.scss';
 
 class Plan extends Shellact {
-  connectedCallback() {
-    this.reRender = () => this.rerender();
-    store.observe(this, this.reRender);
-  }
-
   render() {
-    const { planList } = store.getState();
+    const { planList } = selector((state) => state.plan);
 
     let plans = '';
-
     planList.forEach((plan) => {
       plans += `
         <li>

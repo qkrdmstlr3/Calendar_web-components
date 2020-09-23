@@ -1,5 +1,4 @@
-// shelldux
-import store from '../store';
+export const MAKE_PLAN = 'MAKE_PLAN';
 
 export const makePlan = (plan) => {
   const state = store.getState();

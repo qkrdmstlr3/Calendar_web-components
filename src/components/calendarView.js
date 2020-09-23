@@ -1,6 +1,12 @@
 // lib
 import Shellact from 'lib/shellact';
-import { getNextCalendar, getPrevCalendar } from 'lib/shelldux/action/calendar';
+
+// shelldux
+import { dispatch } from 'lib/shelldux';
+import {
+  handleGetPrevCalendar,
+  handleGetNextCalendar,
+} from 'lib/shelldux/action';
 
 // components
 import './calendar';
@@ -33,11 +39,13 @@ class CalendarView extends Shellact {
   }
 
   handleLeftBtn() {
-    getPrevCalendar();
+    dispatch(handleGetPrevCalendar());
+    this.setState({});
   }
 
   handleRightBtn() {
-    getNextCalendar();
+    dispatch(handleGetNextCalendar());
+    this.setState({});
   }
 
   render() {

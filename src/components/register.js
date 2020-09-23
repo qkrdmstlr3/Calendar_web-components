@@ -1,8 +1,13 @@
 // lib
 import Shellact from 'lib/shellact';
-import store from 'lib/shelldux/store';
-import { chooseStartTab, chooseEndTab } from 'lib/shelldux/action/register';
-import { makePlan } from 'lib/shelldux/action/plan';
+
+// shelldux
+import { selector, dispatch } from 'lib/shelldux';
+import {
+  handleChooseStartTab,
+  handleChooseEndTab,
+  handleMakePlan,
+} from 'lib/shelldux/action';
 
 // Util
 import { querySelector } from 'util/module';
@@ -12,9 +17,6 @@ import styleSheet from 'style/register.scss';
 
 class Register extends Shellact {
   connectedCallback() {
-    this.reRender = () => this.rerender();
-    store.observe(this, this.reRender);
-
     this.shadowRoot.addEventListener('click', (event) => {
       this.handleTabClick(event);
     });
@@ -25,11 +27,11 @@ class Register extends Shellact {
 
   handleTabClick(event) {
     if (event.target.classList.contains('start__day')) {
-      chooseStartTab();
+      dispatch(handleChooseStartTab());
       return;
     }
     if (event.target.classList.contains('end__day')) {
-      chooseEndTab();
+      dispatch(handleChooseEndTab());
       return;
     }
   }
@@ -38,14 +40,15 @@ class Register extends Shellact {
     event.preventDefault();
     if (event.target.closest('form')) {
       const plan = querySelector('input[name="plan"]', this.shadowRoot).value;
+      const { startTab, endTab } = selector((state) => state.calendar);
 
-      makePlan(plan);
+      dispatch(handleMakePlan(startTab, endTab, plan));
       return;
     }
   }
 
   render() {
-    const { tab, startTab, endTab } = store.getState();
+    const { tab, startTab, endTab } = selector((state) => state.calendar);
 
     return [
       `

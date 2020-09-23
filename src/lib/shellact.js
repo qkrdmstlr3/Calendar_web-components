@@ -11,9 +11,9 @@ function renderOutside([html, css], dom) {
 class Shellact extends HTMLElement {
   constructor() {
     super();
+    this.state = {};
     this.attachShadow({ mode: 'open' });
     this.rerender();
-    this.state = {};
   }
 
   setState(state) {
