@@ -27,11 +27,11 @@ class Register extends Shellact {
   }
 
   handleTabClick(event) {
-    if (event.target.classList.contains('start__day')) {
+    if (event.target.closest('.start__day')) {
       dispatch(handleChooseStartTab());
       return;
     }
-    if (event.target.classList.contains('end__day')) {
+    if (event.target.closest('.end__day')) {
       dispatch(handleChooseEndTab());
       return;
     }
