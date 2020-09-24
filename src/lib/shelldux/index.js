@@ -1,14 +1,12 @@
-import reducer from './reducer';
-
 class Shelldux {
   constructor() {
-    this.reducers = null;
+    this.rootReducer = null;
     this.states = null;
     this.observingList = null;
   }
 
   dispatch(result) {
-    Object.entries(this.reducers).forEach(([key, reducer]) => {
+    Object.entries(this.rootReducer).forEach(([key, reducer]) => {
       const state = reducer(this.states[key], result);
       if (state !== reducer(undefined, '')) {
         this.states[key] = state;
@@ -27,7 +25,7 @@ class Shelldux {
 let shelldux = null;
 
 export function combineReducers(reducers) {
-  shelldux.reducers = reducers;
+  shelldux.rootReducer = reducers;
   const states = {};
   const observingList = {};
 
