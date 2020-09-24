@@ -24,8 +24,7 @@ class Shelldux {
   }
 }
 
-const shelldux = new Shelldux();
-reducer();
+let shelldux = null;
 
 export function combineReducers(reducers) {
   shelldux.reducers = reducers;
@@ -50,6 +49,11 @@ export function dispatch(result) {
 
 export function observe(key, component, fn) {
   shelldux.observe(key, component, fn);
+}
+
+export function createStore(reducer) {
+  shelldux = new Shelldux();
+  reducer();
 }
 
 export default shelldux;
