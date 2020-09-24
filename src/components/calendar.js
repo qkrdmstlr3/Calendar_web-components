@@ -2,7 +2,7 @@
 import Shellact from 'lib/shellact';
 
 // shelldux
-import { selector, dispatch } from 'lib/shelldux';
+import { selector, dispatch, observe } from 'lib/shelldux';
 import { handleChooseDate } from 'lib/shelldux/action';
 
 // util
@@ -14,6 +14,12 @@ import styleSheet from 'style/calendar.scss';
 
 class Calendar extends Shellact {
   connectedCallback() {
+    const rerender = () => {
+      this.rerender();
+      this.drawColorToCalendar();
+    };
+    observe('calendar', this, rerender);
+
     this.shadowRoot.addEventListener('click', (event) => {
       this.calendarEventControl(event);
     });
