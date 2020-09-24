@@ -1,4 +1,7 @@
 # Shelldux
+`리덕스를 모방해서 만든 상태관리 모듈`
+
+![스크린샷 2020-09-24 오후 1 34 03](https://user-images.githubusercontent.com/26402298/94101506-ea5a5b00-fe6a-11ea-969a-c1527bde8a77.png)
 
 ## Setting
 
