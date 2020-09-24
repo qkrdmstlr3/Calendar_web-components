@@ -22,6 +22,7 @@ class CustomElement extends HTMLElement {
 
   static get observedAttributes() {
     // 모니터링 할 속성 이름
+    // 속성 이름에 대문자는 포함될 수 없다
   }
 
   attributeChangedCallback(attrName, oldVal, newVal) {
