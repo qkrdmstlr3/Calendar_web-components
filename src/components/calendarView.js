@@ -40,12 +40,10 @@ class CalendarView extends Shellact {
 
   handleLeftBtn() {
     dispatch(handleGetPrevCalendar());
-    this.setState({});
   }
 
   handleRightBtn() {
     dispatch(handleGetNextCalendar());
-    this.setState({});
   }
 
   render() {
