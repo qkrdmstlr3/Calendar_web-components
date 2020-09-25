@@ -8,7 +8,7 @@ class Shelldux {
   dispatch(result) {
     Object.entries(this.rootReducer).forEach(([key, reducer]) => {
       const state = reducer(this.states[key], result);
-      if (state !== reducer(undefined, '')) {
+      if (state !== reducer(undefined, '') && this.states[key] !== state) {
         this.states[key] = state;
         this.observingList[key].forEach(([document, fn]) => {
           fn.call(document);
