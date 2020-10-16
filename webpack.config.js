@@ -43,9 +43,11 @@ module.exports = {
   },
   resolve: {
     alias: {
+      components: path.resolve(__dirname, 'src/components'),
       lib: path.resolve(__dirname, 'src/lib/'),
       util: path.resolve(__dirname, 'src/util/'),
       style: path.resolve(__dirname, 'src/style/'),
+      pages: path.resolve(__dirname, 'src/pages'),
     },
   },
   plugins: [
