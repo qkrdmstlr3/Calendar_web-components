@@ -12,7 +12,15 @@ import './main';
 
 class HomeContainer extends Shellact {
   render() {
-    return [`<div></div>`, null];
+    return [
+      `
+      <router-router>
+        <routes exact path="/banner" component="banner-page"></routes>
+        <routes path="/calendar" component="main-page"></routes>
+      </router-router>
+      `,
+      null,
+    ];
   }
 }
 
