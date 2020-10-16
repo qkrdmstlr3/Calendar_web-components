@@ -2,7 +2,7 @@
 import Shellact from 'lib/shellact';
 
 // shelldux
-import { selector, dispatch, observe } from 'lib/shelldux';
+import { selector, dispatch, observe, disObserve } from 'lib/shelldux';
 import { handleChooseDate } from 'lib/shelldux/action';
 
 // util
@@ -21,6 +21,13 @@ class Calendar extends Shellact {
     observe('calendar', this, rerender);
 
     this.shadowRoot.addEventListener('click', (event) => {
+      this.calendarEventControl(event);
+    });
+  }
+
+  disconnectedCallback() {
+    disObserve('calendar', this);
+    this.shadowRoot.removeEventListener('click', (event) => {
       this.calendarEventControl(event);
     });
   }

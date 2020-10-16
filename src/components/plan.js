@@ -2,7 +2,7 @@
 import Shellact from 'lib/shellact';
 
 // shelldux
-import { selector, observe } from 'lib/shelldux';
+import { selector, observe, disObserve } from 'lib/shelldux';
 
 // Style
 import styleSheet from 'style/plan.scss';
@@ -10,6 +10,10 @@ import styleSheet from 'style/plan.scss';
 class Plan extends Shellact {
   connectedCallback() {
     observe('plan', this, this.rerender);
+  }
+
+  disconnectedCallback() {
+    disObserve('plan', this);
   }
 
   render() {

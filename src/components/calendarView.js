@@ -21,6 +21,12 @@ class CalendarView extends Shellact {
     });
   }
 
+  disconnectedCallback() {
+    this.shadowRoot.removeEventListener('click', (event) => {
+      this.handleCalendar(event);
+    });
+  }
+
   handleCalendar(event) {
     const button = event.target.closest('button');
 

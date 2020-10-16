@@ -20,6 +20,11 @@ class Shelldux {
   observe(key, component, fn) {
     this.observingList[key].push([component, fn]);
   }
+
+  disObserve(key, component) {
+    const index = this.observingList[key].findIndex((c) => c[0] === component);
+    this.observingList[key].splice(index, 1);
+  }
 }
 
 let shelldux = null;
@@ -47,6 +52,10 @@ export function dispatch(result) {
 
 export function observe(key, component, fn) {
   shelldux.observe(key, component, fn);
+}
+
+export function disObserve(key, component) {
+  shelldux.disObserve(key, component);
 }
 
 export function createStore(reducer) {

@@ -1,5 +1,8 @@
 # Shelldux
+
 `리덕스를 모방해서 만든 상태관리 모듈`
+
+- https://redux.js.org/tutorials/essentials/part-1-overview-concepts : 동작 예시
 
 ![스크린샷 2020-09-24 오후 1 34 03](https://user-images.githubusercontent.com/26402298/94101506-ea5a5b00-fe6a-11ea-969a-c1527bde8a77.png)
 
@@ -57,7 +60,10 @@ store.js
 import { createStore } from 'shelldux';
 import rootReducer from './reducer';
 
-createStore(rootReducer);
+const middleware = [];
+
+//미들웨어 존재할 시 넘겨줌
+createStore(rootReducer, middleware);
 ```
 
 ```javascript
@@ -97,6 +103,7 @@ observe
 
 ```javascript
 import { observe } from 'shelldux';
+
 class Component {
   constructor() {
     this.name = 'shellboy';
@@ -105,5 +112,21 @@ class Component {
     // 리렌더링하는 방식으로 활용 가능
   }
 }
-observe('action', this);
+```
+
+disobserve
+
+- 컴포넌트 제거 시 store에서 observe리스트에서도 해당 컴포넌트 제거
+
+```javascript
+import { disObserve } from 'shelldux';
+
+class Component {
+  constructor() {}
+
+  disconnectedCallback() {
+    //컴포넌트 제거 시
+    disObserve('action', this);
+  }
+}
 ```
