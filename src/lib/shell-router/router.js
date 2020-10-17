@@ -18,20 +18,22 @@ class Router extends HTMLElement {
     this.components = this.innerHTML.match(/(?<=component=").+(?=")/g);
 
     if (nextPath) {
-      this.existNextPath(nextPath);
+      this.existNextPath(nextPath, false);
       return;
     }
 
     this.notExistNextPath();
   }
 
-  existNextPath(nextPath) {
+  existNextPath(nextPath, isRefresh) {
     const pathIndex = this.paths.findIndex((path) => nextPath === path);
     if (pathIndex === -1) {
       return;
     }
 
-    history.pushState(null, null, this.paths[pathIndex]);
+    if (!isRefresh) {
+      history.pushState(null, null, this.paths[pathIndex]);
+    }
     this.setInnerHTML(this.components[pathIndex]);
   }
 

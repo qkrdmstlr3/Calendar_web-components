@@ -18,3 +18,9 @@ export function rerenderRouters(nextPath) {
 export function moveToNextPath(nextPath) {
   rerenderRouters(nextPath);
 }
+
+export function refreshRouter(nextPath) {
+  routerStore.forEach((router) => {
+    router.existNextPath(nextPath, true);
+  });
+}

@@ -1,7 +1,7 @@
-import { rerenderRouters } from './store';
+import { refreshRouter } from './store';
 
 (function () {
   window.addEventListener('popstate', () => {
-    rerenderRouters(location.pathname);
+    refreshRouter(location.pathname);
   });
-})();
+});
