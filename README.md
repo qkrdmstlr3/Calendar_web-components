@@ -1,12 +1,20 @@
 # CALENDAR_web-components
 
-커스텀 엘리먼트를 활용한 일정 표시용 달력.
+커스텀 엘리먼트를 활용한 일정 표시용 달력 SPA.
+
+셀프 라이브러리 활용(document파일에 문저)
+|original|selfmade|
+|--|--|
+|react|shellact|
+|react-router|shell-router|
+|redux|shelldux|
 
 ```
 npm install
 ```
 
-![스크린샷 2020-09-19 오후 9 42 45](https://user-images.githubusercontent.com/26402298/93667694-d3121b00-fac2-11ea-8e2e-3bdea08fa83b.png)
+![banner](https://user-images.githubusercontent.com/26402298/96327899-d6280900-1078-11eb-9516-592a185b9e0e.png)
+![main](https://user-images.githubusercontent.com/26402298/93667694-d3121b00-fac2-11ea-8e2e-3bdea08fa83b.png)
 
 ## 계기
 
@@ -39,6 +47,12 @@ npm install
   - shelldux.md 참고
 - shellact라는 것을 만들어서 컴포넌트의 부모 클래스가 되도록 하였다.
   - 아직 미흡한 점이 많다.
+
+### 2020-10-17
+
+- react-router를 모방한 shell-router를 적용시켜 보았다.
+  - spa로 동작하며 url path에 따라서 컴포넌트를 렌더링해준다.
+  - 뒤로가기/앞으로가기는 제공하나 새로고침시에는 아직 잘 동작하지 않는다.
 
 ## Link
 
