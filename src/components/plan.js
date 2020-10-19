@@ -19,21 +19,18 @@ class Plan extends Shellact {
   render() {
     const { planList } = selector((state) => state.plan);
 
-    let plans = '';
-    planList.forEach((plan) => {
-      plans += `
-        <li>
-          <span>${plan.startDay}</span>
-          <span>${plan.endDay}</span>
-          <span>${plan.plan}</span>
-        </li>
-      `;
-    });
-
     return [
       `
         <ul>
-          ${plans}
+          ${planList.reduce((acc, cur) => {
+            return (acc += `
+              <li>
+                <span>${cur.startDay}</span>
+                <span>${cur.endDay}</span>
+                <span>${cur.plan}</span>
+              </li>
+              `);
+          }, '')}
         </ul>
       `,
       styleSheet,

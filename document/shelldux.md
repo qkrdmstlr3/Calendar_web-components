@@ -100,6 +100,7 @@ dispatch(handleActionTest());
 observe
 
 - 특정 상태의 변경을 감지하고 등록된 객체를 this로 call하는 함수를 실행
+- 옵저빙 패턴을 위해서 추가적으로 구현한 함수이다.
 
 ```javascript
 import { observe } from 'shelldux';
@@ -117,6 +118,7 @@ class Component {
 disobserve
 
 - 컴포넌트 제거 시 store에서 observe리스트에서도 해당 컴포넌트 제거
+- 옵저빙 패턴을 위해서 추가적으로 구현한 함수이다.
 
 ```javascript
 import { disObserve } from 'shelldux';
