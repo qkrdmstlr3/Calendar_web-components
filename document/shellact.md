@@ -1,4 +1,4 @@
-# Shelldux
+# Shellact
 
 `순수 js로 react와 비슷하게 코딩하고 싶어서 만든 모듈이다`
 
