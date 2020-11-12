@@ -1,4 +1,4 @@
-# Shelldux
+# Shellrouter
 
 `react-router를 모방해서 만든 CSR을 위한 라우팅 라이브러리`
 
