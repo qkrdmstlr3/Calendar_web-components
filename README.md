@@ -58,6 +58,7 @@ npm install
 - react-router를 모방한 shell-router를 적용시켜 보았다.
   - spa로 동작하며 url path에 따라서 컴포넌트를 렌더링해준다.
   - 뒤로가기/앞으로가기는 제공하나 새로고침시에는 아직 잘 동작하지 않는다.
+- 새로고침 동작문제 해결
 
 ## Link
 
